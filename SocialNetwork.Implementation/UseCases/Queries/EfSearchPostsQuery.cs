@@ -47,7 +47,13 @@ namespace SocialNetwork.Implementation.UseCases.Queries
             {
                 query = query.Where(x => x.CreatedAt <= search.DateTo);
             }
-
+            if (search.HasComments.HasValue)
+            {
+                if(search.HasComments.Value == true)
+                {
+                    query = query.Where(x => x.Comments.Any());
+                }
+            }
             return Paginate(query, search);
 
         }

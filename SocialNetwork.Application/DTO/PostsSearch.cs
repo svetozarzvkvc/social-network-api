@@ -1,4 +1,5 @@
-﻿using SocialNetwork.Domain;
+﻿using Humanizer;
+using SocialNetwork.Domain;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -24,10 +25,10 @@ namespace SocialNetwork.Application.DTO
         public int Id { get; set; }
         public string Title { get; set; }
         public string Category { get; set; }
-
         public string Author { get; set; }
         [JsonIgnore]
         public DateTime CreatedAt { get; set; }
+        public string CreatedAtStr => CreatedAt.Humanize();
         public int CommentsCount { get; set; }
         public IEnumerable<PostSearchCommentsDto> Comments { get; set; }
     }
